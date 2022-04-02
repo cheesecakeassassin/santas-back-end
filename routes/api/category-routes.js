@@ -3,8 +3,8 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
+// Find all categories
 router.get('/', (req, res) => {
-    // Find all categories
     Category.findAll({
         attributes: ['id', 'category_name'],
         include: [
@@ -21,8 +21,8 @@ router.get('/', (req, res) => {
         });
 });
 
+// Find one category by its `id` value
 router.get('/:id', (req, res) => {
-    // Find one category by its `id` value
     Category.findOne({
         where: {
             id: req.params.id,
@@ -48,8 +48,8 @@ router.get('/:id', (req, res) => {
         });
 });
 
+// Create a new category
 router.post('/', (req, res) => {
-    // Create a new category
     Category.create({
         category_name: req.body.category_name,
     })
@@ -60,8 +60,8 @@ router.post('/', (req, res) => {
         });
 });
 
+// Update a category by its `id` value
 router.put('/:id', (req, res) => {
-    // Update a category by its `id` value
     Category.update(
         {
             category_name: req.body.category_name,
@@ -85,8 +85,8 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// Delete a category by its `id` value
 router.delete('/:id', (req, res) => {
-    // Delete a category by its `id` value
     Category.destroy({
         where: {
             id: req.params.id,
